@@ -1,0 +1,62 @@
+version(1);
+project_name = "Handmade Hero";
+
+patterns = {
+	"*.c",
+	"*.cpp",
+	"*.h",
+	"*.m",
+	"*.mm",
+	"*.bat",
+	"*.sh",
+	"*.4coder",
+	"*.txt",
+};
+
+blacklist_patterns = {
+	".*",
+};
+
+load_paths = {
+	{ { { "..\\." }, .recursive = true, .relative = true }, .os = "win" },
+};
+
+
+command_list = {
+	{ 
+		.name = "build",
+		.out = "*compilation*",
+		.footer_panel = true,
+		.save_dirty_files = true,
+		.cursor_at_end = false,
+		.cmd = {
+			{ "..\\cmds\\build.bat", .os = "win" },
+		},
+	},
+
+	{
+		.name = "run",
+		.out = "*compilation*",
+		.footer_panel = true,
+		.save_dirty_files = true,
+		.cursor_at_end = false,
+		.cmd = {
+			{ "..\\cmds\\run.bat", .os = "win" },
+		}
+	},
+
+	{
+		.name = "build_and_run",
+		.out = "*compilation*",
+		.footer_panel = true,
+		.save_dirty_files = true,
+		.cursor_at_end = false,
+		.cmd = {
+			{ "..\\cmds\\build.bat && ..\\cmds\\run.bat", .os = "win" },
+		}
+	}
+};
+
+fkey_command[5] = "build_and_run";
+fkey_command[6] = "build";
+fkey_command[7] = "run";
